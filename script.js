@@ -81,30 +81,59 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof particlesJS !== 'undefined') {
         particlesJS('particles-js', {
             "particles": {
-                "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
                 "color": { "value": "#00f2fe" },
                 "shape": { "type": "circle" },
-                "opacity": { "value": 0.2, "random": false },
-                "size": { "value": 3, "random": true },
+                "opacity": { "value": 0.4, "random": false },
+                "size": { "value": 4, "random": true },
                 "line_linked": {
-                    "enable": true, "distance": 150, "color": "#00f2fe",
-                    "opacity": 0.15, "width": 1
+                    "enable": true, "distance": 180, "color": "#00f2fe",
+                    "opacity": 0.2, "width": 1.5
                 },
-                "move": { "enable": true, "speed": 1.5, "direction": "none", "random": true, "out_mode": "out" }
+                "move": { "enable": true, "speed": 3, "direction": "none", "random": true, "out_mode": "out" }
             },
             "interactivity": {
-                "detect_on": "canvas",
+                "detect_on": "window",
                 "events": {
                     "onhover": { "enable": true, "mode": "grab" },
                     "onclick": { "enable": true, "mode": "push" },
                     "resize": true
                 },
                 "modes": {
-                    "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } },
-                    "push": { "particles_nb": 3 }
+                    "grab": { "distance": 250, "line_linked": { "opacity": 1 } },
+                    "push": { "particles_nb": 4 }
                 }
             },
             "retina_detect": true
+        });
+    }
+
+    // Custom Cursor Logic
+    const cursor = document.querySelector('.cursor');
+    const cursorFollower = document.querySelector('.cursor-follower');
+
+    if (cursor && cursorFollower) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 50);
+        });
+
+        document.querySelectorAll('a, button, .glass-card, .menu-btn').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                cursorFollower.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                cursorFollower.style.backgroundColor = 'rgba(0, 242, 254, 0.1)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursorFollower.style.backgroundColor = 'transparent';
+            });
         });
     }
 });
