@@ -365,7 +365,7 @@ ul { list-style: none; }
 }
 
 .showcase-header {
-    background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.7) 60%, rgba(16,24,39,0) 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #ffffff 85%, transparent 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -376,10 +376,7 @@ ul { list-style: none; }
 .showcase-header img {
     max-width: 250px;
     object-fit: contain;
-    background: #ffffff;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    mix-blend-mode: multiply;
     transform: translateZ(30px);
 }
 
